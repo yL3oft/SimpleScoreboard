@@ -2,7 +2,8 @@ package me.leonardo.scoreboard;
 
 import java.io.File;
 
-import me.leonardo.scoreboard.commands.ScoreboardCommand;
+import me.leonardo.scoreboard.commands.*;
+import me.leonardo.scoreboard.events.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -31,6 +32,10 @@ public class Main extends JavaPlugin{
 		
 		
 		new ScoreboardCommand(this);
+		
+		
+		getServer().getPluginManager().registerEvents(new PlayerJoin(), this);
+		getServer().getPluginManager().registerEvents(new PlayerChangeWorld(), this);
 		
 		
 		new BukkitRunnable() {
