@@ -1,0 +1,95 @@
+# Made by yLeoft_
+# Don't ever try to edit what you don't know
+
+# If you want to remove a line just delete it from here!
+# You can't create new lines for now(Future updates maybe)!
+# Colors only works with &(SHIFT + 7) and §(ALT GR + =)!
+# if the scoreboard don't work, try to remove some lines!
+# Remembering that line 1 is the footer line and 20 the header line
+# Look this example:
+
+# Title
+# Line 15
+# Line 14
+# Line 13
+# ...
+# Line 3
+# Line 2
+# Line 1
+
+
+
+# All the %% you can use:
+# %online-players%
+# %player-name%
+# %player-displayname%
+# %player-health%
+# %player-maxhealth%
+# %player-latency%
+# %server-maxram%
+# %server-usedram%
+# %rank% # Only work with SimpleGroups by yLeoft_.
+# %rank-prefix% # Only work with SimpleGroups by yLeoft_.
+
+
+
+General:
+  perm: 'simplescoreboard.admin'
+
+
+
+Lang:
+  noperm: "&cI'm sorry, but you don't have enough permission to use this command!"
+  usages:
+    scoreboard-setline: '&e/sb setline <scoreboard> <line> <text>'
+    scoreboard-settitle: '&e/sb settitle <scoreboard> <text>'
+    scoreboard-reload: '&e/sb reload'
+  messages:
+    scoreboard-setline-notnumber: "&c{supposed-number} &cit's not a number!"
+    scoreboard-setline-sucess: '&aline {line} &awas set to {line-msg}'
+    scoreboard-settitle-sucess: '&atitle of scoreboard was set to {title}'
+    scoreboard-reload-sucess: '&aReloaded SimpleScoreboard successfully!'
+
+
+
+#This is where you can edit the worlds of the scoreboard
+Scoreboards:
+  world: 'Board'
+
+
+
+Delay: 50
+
+Board:
+  title: '&eTitle'
+  lines:
+    1:
+      line: 'Online: &f%online-players%'
+    2:
+      line: 'You: &f%player-name%'
+    3:
+      line: 'Your name: &f%player-displayname%'
+    4:
+      line: '&4❤ &f%player-health%&4/&f%player-maxhealth%'
+    5:
+      line: '&fPing: %player-latency%ms'
+    6:
+      line: '&6Ram:%server-usedram%&6/%server-maxram%'
+    7:
+      line: '&f7'
+    8:
+      line: '&f8'
+    9:
+      line: '&f9'
+    10:
+      line: '&f10'
+    11:
+      line: '&f11'
+    12:
+      line: '&f12'
+    13:
+      line: '&f13'
+    14:
+      line: '&f14'
+    15:
+      line: '&f15'

@@ -1,0 +1,10 @@
+name: SimpleScoreboard
+version: 1.4
+author: yLeoft_
+main: me.leonardo.scoreboard.Main
+description: SimpleScoreboard plugin!
+
+commands:
+  scoreboard:
+    aliases: [sb]
+    description: Main command of SimpleScoreboard
