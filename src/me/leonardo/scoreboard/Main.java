@@ -48,7 +48,6 @@ public class Main extends JavaPlugin{
 		    	
 		    	if(Bukkit.getOnlinePlayers().size() > 0){
 		    		for(Player people : Bukkit.getOnlinePlayers()){
-			    		
 			    		String path = "Scoreboards";
 			    		for(String world : getConfig().getConfigurationSection(path).getKeys(false)){
 			    			if(people.getWorld().getName().equalsIgnoreCase(world)){
@@ -220,6 +219,64 @@ public class Main extends JavaPlugin{
 		    	return String.valueOf(((org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer) p).getHandle().ping);
 		    case "1.12":
 		    	return String.valueOf(((org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer) p).getHandle().ping);
+		    	
+		    	
+		    case "1.13.0":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_13_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.13.1":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_13_R2.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.13.2":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_13_R2.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.13":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_13_R1.entity.CraftPlayer) p).getHandle().ping);
+		    	
+		    	
+		    case "1.14.0":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_14_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.14.1":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_14_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.14.2":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_14_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.14.3":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_14_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.14.4":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_14_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.14":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_14_R1.entity.CraftPlayer) p).getHandle().ping);
+		    
+		    	
+		    case "1.15.0":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.15.1":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.15.2":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.15":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_15_R1.entity.CraftPlayer) p).getHandle().ping);
+		    
+		    	
+		    case "1.16.0":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_16_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.16.1":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_16_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.16.2":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_16_R2.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.16.3":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_16_R2.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.16.4":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_16_R3.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.16.5":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_16_R3.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.16":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_16_R1.entity.CraftPlayer) p).getHandle().ping);
+		    	
+		    	
+		    case "1.17.0":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer) p).getPing());
+		    case "1.17.1":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer) p).getPing());
+		    case "1.17":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer) p).getPing());
 		    
 		    	
 		    default:
@@ -231,7 +288,7 @@ public class Main extends JavaPlugin{
 		String[] split = Bukkit.getBukkitVersion().split("-");
 		String version = split[0];
 		switch(version)
-		{
+		{	
 		    case "1.8.0":
 		    	return "1.8.0";
 		    case "1.8.1":
@@ -297,6 +354,80 @@ public class Main extends JavaPlugin{
 		    	return "1.12.2";
 		    case "1.12":
 		    	return "1.12.0";
+		    
+		    
+		    case "1.13.0":
+		    	return "1.13.0";
+		    case "1.13.1":
+		    	return "1.13.1";
+		    case "1.13.2":
+		    	return "1.13.2";
+		    case "1.13":
+		    	return "1.13.0";
+		    	
+		    	
+		    case "1.14.0":
+		    	return "1.14.0";
+		    case "1.14.1":
+		    	return "1.14.1";
+		    case "1.14.2":
+		    	return "1.14.2";
+		    case "1.14.3":
+		    	return "1.14.3";
+		    case "1.14.4":
+		    	return "1.14.4";
+		    case "1.14":
+		    	return "1.14.0";
+		    	
+		    	
+		    case "1.15.0":
+		    	return "1.15.0";
+		    case "1.15.1":
+		    	return "1.15.1";
+		    case "1.15.2":
+		    	return "1.15.2";
+		    case "1.15":
+		    	return "1.15.0";
+		    
+		    	
+		    case "1.16.0":
+		    	return "1.16.0";
+		    case "1.16.1":
+		    	return "1.16.1";
+		    case "1.16.2":
+		    	return "1.16.2";
+		    case "1.16.3":
+		    	return "1.16.3";
+		    case "1.16.4":
+		    	return "1.16.4";
+		    case "1.16.5":
+		    	return "1.16.5";
+		    case "1.16":
+		    	return "1.16.0";
+		    	
+		    	
+		    case "1.17.0":
+		    	return "1.17.0";
+		    case "1.17.1":
+		    	return "1.17.1";
+		    case "1.17":
+		    	return "1.17.0";
+		    	
+		    	
+		    case "1.18.0":
+		    	return "1.18.0";
+		    case "1.18.1":
+		    	return "1.18.1";
+		    case "1.18.2":
+		    	return "1.18.2";
+		    case "1.18":
+		    	return "1.18.0";
+		    
+		    	
+		    case "1.19.0":
+		    	return "1.19.0";
+		    case "1.19":
+		    	return "1.19.0";
 		    	
 		    	
 		    default:
