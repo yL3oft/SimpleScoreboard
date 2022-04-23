@@ -38,19 +38,24 @@ public class Main extends JavaPlugin{
 		getServer().getPluginManager().registerEvents(new PlayerChangeWorld(), this);
 		
 		
+		Bukkit.getConsoleSender().sendMessage(ChatColor.translateAlternateColorCodes('&', "&6Version: "+getversion()));
+		
+		
 		new BukkitRunnable() {
 			
 		    @Override
 		    public void run() {
 		    	
-		    	for(Player people : Bukkit.getOnlinePlayers()){
-		    		
-		    		String path = "Scoreboards";
-		    		for(String world : getConfig().getConfigurationSection(path).getKeys(false)){
-		    			if(people.getWorld().getName().equalsIgnoreCase(world)){
-		    				scoreboard(people, getConfig().getString(path+"."+world));
-		    			}
-		    		}
+		    	if(Bukkit.getOnlinePlayers().size() > 0){
+		    		for(Player people : Bukkit.getOnlinePlayers()){
+			    		
+			    		String path = "Scoreboards";
+			    		for(String world : getConfig().getConfigurationSection(path).getKeys(false)){
+			    			if(people.getWorld().getName().equalsIgnoreCase(world)){
+			    				scoreboard(people, getConfig().getString(path+"."+world));
+			    			}
+			    		}
+			    	}
 		    	}
 		    	
 		    }
@@ -100,6 +105,7 @@ public class Main extends JavaPlugin{
 	}
 	
 	
+	@SuppressWarnings("deprecation")
 	public void checkscore(Player p, String number, Objective o, String board){
 		String boardline = board+".lines."+number+".line";
 		int bytes = 1048576;
@@ -117,25 +123,193 @@ public class Main extends JavaPlugin{
 						.replace("%player-displayname%", p.getDisplayName())
 						.replace("%player-health%", String.valueOf(p.getHealth()))
 						.replace("%player-maxhealth%", String.valueOf(p.getMaxHealth()))
-						.replace("%player-latency%", String.valueOf(((CraftPlayer) p).getHandle().ping))
 						.replace("%server-usedram%", String.valueOf(usedMemory))
 						.replace("%server-maxram%", String.valueOf(maxMemory))
-						.replace("%online-players%", String.valueOf(Bukkit.getOnlinePlayers().size()))
+						.replace("%online-players%", String.valueOf(Bukkit.getOnlinePlayers().size())
 						.replace("%rank%", cfg2.getString("Players."+p.getUniqueId().toString()))
-						.replace("%rank-prefix%", cfg.getString("Groups."+cfg2.getString("Players."+p.getUniqueId().toString())+".prefix")));
+						.replace("%rank-prefix%", cfg.getString("Groups."+cfg2.getString("Players."+p.getUniqueId().toString())+".prefix"))));
 			}else{
 				scorem = colored(Main.main.getConfig().getString(boardline)
 						.replace("%player-name%", p.getName())
 						.replace("%player-displayname%", p.getDisplayName())
 						.replace("%player-health%", String.valueOf(p.getHealth()))
 						.replace("%player-maxhealth%", String.valueOf(p.getMaxHealth()))
-						.replace("%player-latency%", String.valueOf(((CraftPlayer) p).getHandle().ping))
 						.replace("%server-usedram%", String.valueOf(usedMemory))
 						.replace("%server-maxram%", String.valueOf(maxMemory))
 						.replace("%online-players%", String.valueOf(Bukkit.getOnlinePlayers().size())));
 			}
+			if(Main.main.getConfig().getString(boardline).contains("%player-latency%")){
+				scorem = colored(scorem.replace("%player-latency%", getlatency(p)));
+			}
 			Score score = o.getScore(scorem);
 			score.setScore(Integer.parseInt(number));
+		}
+	}
+	
+	
+	public String getlatency(Player p){
+		String[] split = Bukkit.getBukkitVersion().split("-");
+		if(split.length < 1){
+			return "...";
+		}
+		String version = split[0];
+		switch(version)
+		{
+		    case "1.8.0":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.8.1":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.8.2":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_8_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.8.3":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_8_R2.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.8.4":
+		    	return String.valueOf(((CraftPlayer) p).getHandle().ping);
+		    case "1.8.5":
+		    	return String.valueOf(((CraftPlayer) p).getHandle().ping);
+		    case "1.8.6":
+		    	return String.valueOf(((CraftPlayer) p).getHandle().ping);
+		    case "1.8.7":
+		    	return String.valueOf(((CraftPlayer) p).getHandle().ping);
+		    case "1.8.8":
+		    	return String.valueOf(((CraftPlayer) p).getHandle().ping);
+		    case "1.8":
+		    	return String.valueOf(((CraftPlayer) p).getHandle().ping);
+		    	
+		    	
+		    	
+		    case "1.9.0":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.9.1":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.9.2":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.9.3":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.9.4":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_9_R2.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.9":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer) p).getHandle().ping);
+		    	
+		    	
+		    case "1.10.0":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.10.1":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.10.2":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.10":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_10_R1.entity.CraftPlayer) p).getHandle().ping);
+		    
+		    	
+		    case "1.11.0":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.11.1":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.11.2":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.11":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_11_R1.entity.CraftPlayer) p).getHandle().ping);
+		    
+		    	
+		    case "1.12.0":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.12.1":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.12.2":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer) p).getHandle().ping);
+		    case "1.12":
+		    	return String.valueOf(((org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer) p).getHandle().ping);
+		    
+		    	
+		    default:
+		        return "...";
+		}
+	}
+	
+	public String getversion(){
+		String[] split = Bukkit.getBukkitVersion().split("-");
+		String version = split[0];
+		switch(version)
+		{
+		    case "1.8.0":
+		    	return "1.8.0";
+		    case "1.8.1":
+		    	return "1.8.1";
+		    case "1.8.2":
+		    	return "1.8.2";
+		    case "1.8.3":
+		    	return "1.8.3";
+		    case "1.8.4":
+		    	return "1.8.4";
+		    case "1.8.5":
+		    	return "1.8.5";
+		    case "1.8.6":
+		    	return "1.8.6";
+		    case "1.8.7":
+		    	return "1.8.7";
+		    case "1.8.8":
+		    	return "1.8.8";
+		    case "1.8":
+		    	return "1.8.0";
+		    	
+		    	
+		    	
+		    case "1.9.0":
+		    	return "1.9.0";
+		    case "1.9.1":
+		    	return "1.9.1";
+		    case "1.9.2":
+		    	return "1.9.2";
+		    case "1.9.3":
+		    	return "1.9.3";
+		    case "1.9.4":
+		    	return "1.9.4";
+		    case "1.9":
+		    	return "1.9.0";
+		    	
+		    	
+		    case "1.10.0":
+		    	return "1.10.0";
+		    case "1.10.1":
+		    	return "1.10.1";
+		    case "1.10.2":
+		    	return "1.10.2";
+		    case "1.10":
+		    	return "1.10.0";
+		    
+		    	
+		    case "1.11.0":
+		    	return "1.11.0";
+		    case "1.11.1":
+		    	return "1.11.1";
+		    case "1.11.2":
+		    	return "1.11.2";
+		    case "1.11":
+		    	return "1.11.0";
+		    
+		    	
+		    case "1.12.0":
+		    	return "1.12.0";
+		    case "1.12.1":
+		    	return "1.12.1";
+		    case "1.12.2":
+		    	return "1.12.2";
+		    case "1.12":
+		    	return "1.12.0";
+		    	
+		    	
+		    default:
+		        return "...";
+		}
+	}
+	
+	
+	public boolean vc(String v, String c){
+		if(v.contains(c)){
+			return true;
+		}else{
+			return false;
 		}
 	}
 	

@@ -26,8 +26,8 @@
 # %player-health%
 # %player-maxhealth%
 # %player-latency%
-# %server-maxram%
-# %server-usedram%
+# %server-maxram% # Working
+# %server-usedram% # Not working
 # %rank% # Only work with SimpleGroups by yLeoft_.
 # %rank-prefix% # Only work with SimpleGroups by yLeoft_.
 
@@ -74,7 +74,7 @@ Board:
     5:
       line: '&fPing: %player-latency%ms'
     6:
-      line: '&6Ram:%server-usedram%&6/%server-maxram%'
+      line: '&6Ram: Used-ram&6/%server-maxram%'
     7:
       line: '&f7'
     8:
